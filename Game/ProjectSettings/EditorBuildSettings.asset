@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScenes/3rdLevelManagerTest 1.unity
     guid: d50a59784ebbdb54eb3c0bb82227b99e
   - enabled: 1
+    path: Assets/Scenes/Game Scenes/Menu Scenes/Main Menu.unity
+    guid: 3082d716a3f66b94ca13b3d7d2236b98
+  - enabled: 1
     path: Assets/Scenes/Game Scenes/Level 1.unity
     guid: 26b4f847d3d55da4b8c9db669d40d958
   - enabled: 1

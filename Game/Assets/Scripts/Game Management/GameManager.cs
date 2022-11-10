@@ -51,7 +51,11 @@ public class GameManager : MonoBehaviour
 
         startTime = Time.time - previousSceneTime;
         Scene scene = SceneManager.GetActiveScene();
-        currentCheckPoint = startCheckPoint;
+        if(startCheckPoint != null)
+        {
+            currentCheckPoint = startCheckPoint;
+        }
+        
         log = Analytics.Instance;
 
     }
@@ -139,6 +143,15 @@ public class GameManager : MonoBehaviour
             log.WriteLine(cause,timeElapsed ,SceneManager.GetActiveScene().name, playerPos);
         }
      
+    }
+
+    public void startGame() // will need to be adjusted to save games and continue games and what not
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            previousSceneTime = 0;
+            SceneManager.LoadScene(1);
+        }
     }
 
 }
