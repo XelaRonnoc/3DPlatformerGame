@@ -11,6 +11,7 @@ public class ForcePlayerMove : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [SerializeField] private float accelForce = 20;
 
+
     // player related vars
     private Rigidbody rb;
     private Vector3 moveDirection;
@@ -62,8 +63,11 @@ public class ForcePlayerMove : MonoBehaviour
         horizontalInput = Input.GetButton(InputAxes.Horizontal);
         verticalInput = Input.GetButton(InputAxes.Vertical);
 
+
         // updates the game manager with current player position
         GameManager.Instance.UpdatePlayerPos(transform.position);
+        
+
 
     }
 
@@ -71,15 +75,9 @@ public class ForcePlayerMove : MonoBehaviour
     {
 
         // inputs added to new vector
-        moveDirection = new Vector3(hInput, 0, vInput);
-        hVelo = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        moveDirection = transform.InverseTransformDirection(new Vector3(hInput, 0, vInput));
 
-        // turning
-        if (moveDirection.magnitude > 0)
-        {
-            rotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-        }        
-        rb.rotation = rotation; // sets the avatars facing to the last known movement direction
+        hVelo = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
         if (!movingGround)
         {
